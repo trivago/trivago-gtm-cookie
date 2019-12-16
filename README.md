@@ -1,0 +1,1 @@
+# trivago-gtm-cookie
