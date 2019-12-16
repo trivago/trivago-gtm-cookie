@@ -1,5 +1,5 @@
 homepage: "https://developer.trivago.com/conversiontracking/conversion-api.html",
 documentation: "https://developer.trivago.com/conversiontracking/conversion-api.html",
 versions:
-  - sha: 
+  - sha: c6aae1aca22ed0d7ad834a965d7f8e3f6e859fad
     changeNotes: Initial Version of the TAG
