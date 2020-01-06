@@ -1,5 +1,5 @@
 homepage: "https://developer.trivago.com/conversiontracking/conversion-api.html",
 documentation: "https://developer.trivago.com/conversiontracking/conversion-api.html",
 versions:
-  - sha: c6aae1aca22ed0d7ad834a965d7f8e3f6e859fad
-    changeNotes: Initial Version of the TAG
+  - sha: e3c25b867278ac293df4f22cb482d27e7ad685fd
+    changeNotes: Update tag to store the value in window as well
