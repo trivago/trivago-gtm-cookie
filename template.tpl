@@ -38,7 +38,15 @@ ___TEMPLATE_PARAMETERS___
     "displayName": "Time to store the cookie",
     "simpleValueType": true,
     "defaultValue": 30,
-    "valueUnit": "days"
+    "valueUnit": "days",
+    "valueValidators": [
+      {
+        "type": "POSITIVE_NUMBER"
+      },
+      {
+        "type": "NON_EMPTY"
+      }
+    ]
   },
   {
     "type": "TEXT",
@@ -61,8 +69,8 @@ const setInWindow = require('setInWindow');
 log('data =', data);
 var cookie_name = 'GTM_TRV_REFERENCE_TR'; //cookie name
 var key_name = 'GTM_TRV_REFERENCE_TR';
-var ttl = 30; //days to store the cookie
-var placeholder = 'trv_reference'; //click id placeholder
+var ttl = data.time_to_live; //days to store the cookie
+var placeholder = data.placeholder; //click id placeholder
 
 var trv_ref_value = getQueryParameters(placeholder, false);
 log(cookie_name);
