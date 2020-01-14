@@ -76,19 +76,23 @@ var trv_ref_value = getQueryParameters(placeholder, false);
 log(cookie_name);
 log(trv_ref_value);
 
-const options = {
-  'path': '/',
-  'max-age': 60*60*24*ttl,
-  'secure': true
-};
+if (!trv_ref_value){
+    log('empty trv_reference');
+} else {
+  const options = {
+    'path': '/',
+    'max-age': 60*60*24*ttl,
+    'secure': true
+  };
 
-//setting up a cookie
-setCookie(cookie_name, trv_ref_value, options);
+  //setting up a cookie
+  setCookie(cookie_name, trv_ref_value, options);
 
-//setting up a data variable
-setInWindow(key_name, trv_ref_value, true);
+  //setting up a data variable
+  setInWindow(key_name, trv_ref_value, true);
 
-data.gtmOnSuccess();
+  data.gtmOnSuccess();
+}
 
 
 ___WEB_PERMISSIONS___
