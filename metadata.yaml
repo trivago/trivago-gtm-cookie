@@ -1,5 +1,5 @@
 homepage: "https://developer.trivago.com/conversiontracking/conversion-api.html",
 documentation: "https://developer.trivago.com/conversiontracking/conversion-api.html",
 versions:
-  - sha: 55aa48d89c36985a94fd37ec1b6b71d2abb8f39b
+  - sha: bcd42b1c62ad462028f2877e5e3a2b14aa64cdde
     changeNotes: Update tag to work with placeholder info
