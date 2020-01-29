@@ -65,6 +65,8 @@ const log = require('logToConsole');
 const getQueryParameters = require('getQueryParameters');
 const setCookie = require('setCookie');
 const setInWindow = require('setInWindow');
+const injectScript = require('injectScript');
+const query = require('queryPermission');  
 
 log('data =', data);
 var cookie_name = 'GTM_TRV_REFERENCE_TR'; //cookie name
@@ -73,9 +75,6 @@ var ttl = data.time_to_live; //days to store the cookie
 var placeholder = data.placeholder; //click id placeholder
 
 var trv_ref_value = getQueryParameters(placeholder, false);
-log(cookie_name);
-log(trv_ref_value);
-
 if (!trv_ref_value){
     log('empty trv_reference');
 } else {
@@ -87,11 +86,26 @@ if (!trv_ref_value){
 
   //setting up a cookie
   setCookie(cookie_name, trv_ref_value, options);
-
   //setting up a data variable
   setInWindow(key_name, trv_ref_value, true);
+}
 
-  data.gtmOnSuccess();
+var url = 'https://conv.trivago.com/trv_ref_capture.js';
+const TRV_REF = {};
+TRV_REF.placeholder = placeholder;
+setInWindow('TRV_REF', TRV_REF, true);
+
+const onSuccess = () => {
+  	log('script was loaded');
+};
+
+const onFailure = () => {
+  	log("Error: failed to trigger event on url: " + url + " with data: " + data);
+    data.gtmOnFailure();
+};
+
+if (query('inject_script', url)) {
+  injectScript(url, onSuccess, onFailure);
 }
 
 
@@ -260,6 +274,71 @@ ___WEB_PERMISSIONS___
                     "boolean": false
                   }
                 ]
+              },
+              {
+                "type": 3,
+                "mapKey": [
+                  {
+                    "type": 1,
+                    "string": "key"
+                  },
+                  {
+                    "type": 1,
+                    "string": "read"
+                  },
+                  {
+                    "type": 1,
+                    "string": "write"
+                  },
+                  {
+                    "type": 1,
+                    "string": "execute"
+                  }
+                ],
+                "mapValue": [
+                  {
+                    "type": 1,
+                    "string": "TRV_REF"
+                  },
+                  {
+                    "type": 8,
+                    "boolean": true
+                  },
+                  {
+                    "type": 8,
+                    "boolean": true
+                  },
+                  {
+                    "type": 8,
+                    "boolean": false
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "clientAnnotations": {
+      "isEditedByUser": true
+    },
+    "isRequired": true
+  },
+  {
+    "instance": {
+      "key": {
+        "publicId": "inject_script",
+        "versionId": "1"
+      },
+      "param": [
+        {
+          "key": "urls",
+          "value": {
+            "type": 2,
+            "listItem": [
+              {
+                "type": 1,
+                "string": "https://conv.trivago.com/"
               }
             ]
           }
