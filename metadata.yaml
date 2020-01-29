@@ -1,5 +1,5 @@
 homepage: "https://developer.trivago.com/conversiontracking/conversion-api.html",
 documentation: "https://developer.trivago.com/conversiontracking/conversion-api.html",
 versions:
-  - sha: bcd42b1c62ad462028f2877e5e3a2b14aa64cdde
-    changeNotes: Update tag to work with placeholder info
+  - sha: 44c8f18451ed188f68b77f38e14dad645e7e1d2a
+    changeNotes: Update tag to work with external script to store trv_ref inside local storage
