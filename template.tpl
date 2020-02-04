@@ -81,7 +81,8 @@ if (!trv_ref_value){
   const options = {
     'path': '/',
     'max-age': 60*60*24*ttl,
-    'secure': true
+    'secure': true,
+    'samesite':'lax'
   };
 
   //setting up a cookie
